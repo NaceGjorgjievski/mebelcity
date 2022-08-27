@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./screens/HomeWithJumbo";
+import ProductScreen from "./screens/ProductScreen";
+import Test from "./screens/ProductScreenBootstrap";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useContext } from "react";
+import { Store } from "./Store";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import CartScreen from "./screens/CartScreen";
+import CategoryScreen from "./screens/CategoryScreen";
+import SigninScreen from "./screens/SigninScreen";
 
 function App() {
+  const { state } = useContext(Store);
+  const { cart } = state;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+
+      <Routes>
+        <Route path="/product/:slug" element={<Test />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<CartScreen />} />
+        <Route path="/signin" element={<SigninScreen />} />
+        <Route path="/products" element={<CategoryScreen />} />
+      </Routes>
+
+      <Footer />
+    </BrowserRouter>
   );
 }
 

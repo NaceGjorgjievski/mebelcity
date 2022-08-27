@@ -1,0 +1,33 @@
+.pageContainer {
+  min-height: 100vh;
+}
+
+.main {
+  margin-top: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formCointainer {
+  width: 400px;
+}
+
+.submitBtnContainer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerParagraph {
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 440px) {
+  .formCointainer {
+    width: 100%;
+  }
+}

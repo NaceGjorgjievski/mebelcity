@@ -1,0 +1,63 @@
+.footer {
+  box-sizing: border-box;
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 5px solid red;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__social img {
+  width: 30px;
+  margin-top: 7px;
+}
+
+.socialIconText {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.socialIconText span {
+  margin-left: 5px;
+}
+
+.footer__newsletter {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__newsletter div {
+  width: auto;
+  display: flex;
+}
+
+.footer__newsletter input {
+  background-color: #e9e9e9;
+  border: none;
+  height: 30px;
+}
+
+#email {
+  flex: 1;
+}
+#submit {
+  height: 32px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#email:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 440px) {
+  .footer {
+    flex-direction: column;
+  }
+}

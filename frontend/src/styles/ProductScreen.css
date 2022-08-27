@@ -1,0 +1,154 @@
+.container {
+  display: flex;
+}
+
+.container img {
+  height: 100%;
+}
+
+.left-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainImg {
+  height: 500px;
+}
+
+.sideImgContainer {
+  height: 150px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.sideImg {
+  height: 100%;
+}
+
+.name-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-container {
+  display: flex;
+}
+
+.price-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
+.price-left h2 {
+  color: red;
+}
+
+.price-left img {
+  width: 40px;
+  height: 40px;
+}
+
+.price-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-right button {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 19px;
+}
+
+#name {
+  text-align: center;
+}
+
+#price {
+  color: red;
+}
+
+#icon {
+  width: 40px;
+  height: 40px;
+  filter: invert(0%) sepia(00%) saturate(8000%) hue-rotate(8deg) brightness(0%)
+    contrast(234%);
+}
+
+#table {
+  margin-top: 10px;
+}
+
+tr {
+  cursor: pointer;
+}
+
+.imgRow {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+#sec {
+  width: 100px;
+  height: 100px;
+}
+
+table img {
+  width: 200px;
+}
+#tmp {
+  margin-left: 20px;
+}
+#tmp tr,
+#tmp td,
+#tmp th {
+  border: 1px solid black;
+  height: 40px;
+  padding: 3px;
+}
+
+@media only screen and (max-width: 750) {
+  #main {
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #sec {
+    height: 50px;
+  }
+}
+
+@media only screen and (max-width: 768) {
+  #main {
+    height: 260px !important;
+  }
+}
+
+@media only screen and (max-width: 575) {
+  #main {
+    height: auto !important;
+  }
+}
