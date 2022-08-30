@@ -1,7 +1,23 @@
+import bcrypt from "bcryptjs";
+
 const data = {
+  users: [
+    {
+      name: "Nace",
+      email: "nace@example.com",
+      password: bcrypt.hashSync("123456"),
+      isAdmin: true,
+    },
+    {
+      name: "tester1",
+      email: "tester@example.com",
+      password: bcrypt.hashSync("123456"),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
-      _id: "1",
+      //_id: "1",
       name: "Арин",
       slug: "gejmerski-stol-arin",
       category: "office",
@@ -17,7 +33,7 @@ const data = {
       scheme: "/products/arin_ap_0.jpg",
     },
     {
-      _id: "2",
+      //_id: "2",
       name: "Торин",
       slug: "gejmerski-stol-torin",
       category: "office",
