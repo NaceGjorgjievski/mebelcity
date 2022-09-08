@@ -10,22 +10,31 @@ import { Store } from "../Store";
 import { toast } from "react-toastify";
 import { getError } from "../components/utils";
 
-function SigninScreen() {
+function SignupScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get("redirect");
   const redirect = redirectInUrl ? redirectInUrl : "/";
 
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error("Лозинките не се совпаѓаат");
+      return;
+    }
     try {
-      const { data } = await Axios.post("/api/users/signin", {
+      const { data } = await Axios.post("/api/users/signup", {
+        name,
+        contact,
         email,
         password,
       });
@@ -47,10 +56,26 @@ function SigninScreen() {
     <div className="pageContainer">
       <Container className="main">
         <Helmet>
-          <title>Најави се</title>
+          <title>Регистрирај се</title>
         </Helmet>
-        <h1>Најави се</h1>
+        <h1>Регистрирај се</h1>
         <Form className="formCointainer" onSubmit={submitHandler}>
+          <Form.Group controlId="name">
+            <Form.Label>Име и Презиме</Form.Label>
+            <Form.Control
+              style={{ textAlign: "left" }}
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="contact">
+            <Form.Label>Телефон</Form.Label>
+            <Form.Control
+              type="text"
+              required
+              onChange={(e) => setContact(e.target.value)}
+            />
+          </Form.Group>
           <Form.Group controlId="email">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -67,14 +92,22 @@ function SigninScreen() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
+          <Form.Group controlId="confirmPassword">
+            <Form.Label>Потврди Лозинка</Form.Label>
+            <Form.Control
+              type="password"
+              required
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </Form.Group>
           <div className="submitBtnContainer">
             <Button variant="danger" size="lg" type="submit">
-              Најави се
+              Регистрирај се
             </Button>
           </div>
           <div className="registerParagraph">
-            Нов корисник?{" "}
-            <Link to={`/signup?redirect=${redirect}`}>Регистрирај се</Link>
+            Имате профил?{" "}
+            <Link to={`/signin?redirect=${redirect}`}>Најави се</Link>
           </div>
         </Form>
       </Container>
@@ -82,4 +115,4 @@ function SigninScreen() {
   );
 }
 
-export default SigninScreen;
+export default SignupScreen;

@@ -14,6 +14,17 @@
   width: 400px;
 }
 
+.shipPC {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.shipPC .checkout-steps {
+  width: 70%;
+}
+
 .submitBtnContainer {
   margin-top: 20px;
   display: flex;
@@ -29,5 +40,17 @@
 @media only screen and (max-width: 440px) {
   .formCointainer {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 559px) {
+  .shipPC .checkout-steps {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 331px) {
+  .shipPC .checkout-steps {
+    display: none;
   }
 }

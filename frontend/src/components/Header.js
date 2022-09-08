@@ -15,20 +15,23 @@ import BedroomChildIcon from "@mui/icons-material/BedroomChild";
 import DeckIcon from "@mui/icons-material/Deck";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo2 from "../Images/logo2.png";
 import Badge from "react-bootstrap/Badge";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Store } from "../Store";
 import { useContext } from "react";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const toggleMenu = (event) => {
+  event.stopPropagation();
   let menu = document.querySelector(".mobile-menu-container");
   menu.classList.remove("hidden");
   menu.classList.add("visible");
 };
 
 const toggleSubMenu = (event) => {
+  event.stopPropagation();
   let menu = document.querySelector(".subDropdown");
   menu.classList.remove("hidden");
   menu.classList.add("visible");
@@ -67,8 +70,17 @@ const backToSubMenu = (event) => {
 };
 
 function Header() {
-  const { state } = useContext(Store);
-  const { cart } = state;
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart, userInfo } = state;
+  const navigate = useNavigate();
+
+  const signoutHandler = () => {
+    ctxDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("shippingAddress");
+    localStorage.removeItem("paymentMethod");
+  };
+
   return (
     <div className="header">
       <div className="header__iconContainer">
@@ -77,14 +89,27 @@ function Header() {
           fontSize="large"
           onClick={toggleMenu}
         />
-        <img className="header__icon" src={logo2} alt="logo"></img>
+        <img
+          className="header__icon"
+          src={logo2}
+          alt="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        ></img>
       </div>
       <div className="mobile-menu-container hidden">
         <div className="closeBtn" onClick={closeMenu}>
           x
         </div>
         <ul className="mobile-menu">
-          <li>Почетна</li>
+          <Link
+            to="/"
+            style={{ textDecoration: "none", color: "black" }}
+            onClick={closeMenu}
+          >
+            <li>Почетна</li>
+          </Link>
           <li onClick={toggleSubMenu} className="subMenu">
             Производи <ArrowDropDownIcon />
             <div className="subDropdown hidden">
@@ -491,10 +516,59 @@ function Header() {
       </nav>
       <div className="header__right">
         <div className="header__buttons">
-          <span>
-            <AccountCircleIcon className="header__login" fontSize="large" />
-            <p>Најави се</p>
-          </span>
+          {userInfo ? (
+            <NavDropdown
+              title={
+                <span>
+                  <AccountCircleIcon
+                    className="header__login"
+                    fontSize="large"
+                  />
+                  <p>{userInfo.name}</p>
+                </span>
+              }
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
+                Профил
+              </NavDropdown.Item>
+
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/orderhistory");
+                }}
+              >
+                Нарачки
+              </NavDropdown.Item>
+
+              <NavDropdown.Divider />
+              <Link
+                className="drowdown-item"
+                to="#signout"
+                onClick={signoutHandler}
+              >
+                Одјави се
+              </Link>
+            </NavDropdown>
+          ) : (
+            <Link
+              to={"/signin"}
+              className="link"
+              onClick={() => {
+                navigate("/orderhistory");
+              }}
+            >
+              <span>
+                <AccountCircleIcon className="header__login" fontSize="large" />
+                <p>Најави се</p>
+              </span>
+            </Link>
+          )}
+
           <Link to="/cart" className="badgee">
             <span>
               <ShoppingBasketIcon className="header__cart" fontSize="large" />
