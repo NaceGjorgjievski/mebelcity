@@ -79,6 +79,7 @@ function Header() {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethod");
+    window.location.href = "/signin";
   };
 
   return (
@@ -546,13 +547,13 @@ function Header() {
               </NavDropdown.Item>
 
               <NavDropdown.Divider />
-              <Link
+              <NavDropdown.Item
                 className="drowdown-item"
                 to="#signout"
                 onClick={signoutHandler}
               >
                 Одјави се
-              </Link>
+              </NavDropdown.Item>
             </NavDropdown>
           ) : (
             <Link

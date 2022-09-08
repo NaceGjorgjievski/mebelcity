@@ -19,6 +19,7 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import CardPaymentScreen from "./screens/CardPaymentScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 function App() {
   const { state } = useContext(Store);
@@ -39,6 +40,7 @@ function App() {
         <Route path="/placeorder" element={<PlaceOrderScreen />} />
         <Route path="placeorder/payment" element={<CardPaymentScreen />} />
         <Route path="/orderhistory" element={<OrderHistoryScreen />} />
+        <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/order/:id" element={<OrderScreen />} />
         <Route path="/products" element={<CategoryScreen />} />
       </Routes>
