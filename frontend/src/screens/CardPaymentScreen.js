@@ -40,10 +40,26 @@ function CardPaymentScreen() {
   cart.shippingPrice = cart.itemsPrice > 1500 ? round2(0) : round2(150);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
 
+  const [cardNumber, setCardNumber] = useState("");
+  const handleChange = (event) => {
+    const result = event.target.value.replace(/[^0-9]/gi, "");
+    setCardNumber(result);
+  };
+  const [ccvNumber, setCcvNumber] = useState("");
+  const handleChangeCCV = (event) => {
+    const result = event.target.value.replace(/[^0-9]/gi, "");
+    console.log(event.currentTarget.validity.valid);
+
+    setCcvNumber(result);
+  };
   const paymentHandler = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (cardNumber.length !== 16) {
       event.preventDefault();
       event.stopPropagation();
     }
@@ -62,6 +78,8 @@ function CardPaymentScreen() {
             totalPrice: cart.totalPrice,
             isPaid: true,
             paidAt: Date.now(),
+            isConfirmed: true,
+            contactNumber: userInfo.contact,
           },
           {
             headers: {
@@ -94,19 +112,16 @@ function CardPaymentScreen() {
         >
           <Form.Group id="nameInput">
             <Form.Label>Име и Презиме</Form.Label>
-            <Form.Control
-              type="text"
-              //value={holderName}
-              // onChange={(e) => setHolderName(e.target.value)}
-              required
-            ></Form.Control>
+            <Form.Control type="text" required></Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Број на картичка</Form.Label>
             <Form.Control
               type="text"
-              //value={cardNumber}
-              //onChange={(e) => setCardNumber(e.target.value)}
+              minLength="16"
+              maxLength="16"
+              value={cardNumber}
+              onChange={handleChange}
               required
             ></Form.Control>
           </Form.Group>
@@ -114,8 +129,10 @@ function CardPaymentScreen() {
             <Form.Label>CVV2/CVC2</Form.Label>
             <Form.Control
               type="text"
-              //value={cvv}
-              //onChange={(e) => setCvv(e.target.value)}
+              minLength={3}
+              maxLength={3}
+              value={ccvNumber}
+              onChange={handleChangeCCV}
               required
             ></Form.Control>
           </Form.Group>

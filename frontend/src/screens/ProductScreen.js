@@ -71,6 +71,9 @@ function ProductScreen() {
               <div className="sideImg">
                 <img src={product.sideImage} alt={product.name}></img>
               </div>
+              <div className="sideImg">
+                <img src={product.sideImage2} alt={product.name}></img>
+              </div>
             </div>
           </div>
           <div className="right-side">

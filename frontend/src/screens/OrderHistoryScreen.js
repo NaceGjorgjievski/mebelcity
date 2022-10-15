@@ -9,6 +9,8 @@ import { Store } from "../Store";
 import Button from "react-bootstrap/Button";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
+import PhonePausedIcon from "@mui/icons-material/PhonePaused";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -48,7 +50,7 @@ function OrderHistoryScreen() {
   }, [userInfo]);
 
   return (
-    <div className="pageContainer shipPC">
+    <div className="pageContainer shipPC" style={{ justifyContent: "normal" }}>
       <Helmet>
         <title>Историја на нарачки</title>
       </Helmet>
@@ -81,8 +83,10 @@ function OrderHistoryScreen() {
                 <td>
                   {order.isDelivered ? (
                     <CheckIcon></CheckIcon>
+                  ) : order.isShipped ? (
+                    <LocalShippingIcon></LocalShippingIcon>
                   ) : (
-                    <ClearIcon></ClearIcon>
+                    <PhonePausedIcon></PhonePausedIcon>
                   )}
                 </td>
                 <td>

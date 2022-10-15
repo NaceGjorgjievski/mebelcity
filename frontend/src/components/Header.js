@@ -517,7 +517,46 @@ function Header() {
       </nav>
       <div className="header__right">
         <div className="header__buttons">
-          {userInfo ? (
+          {userInfo && userInfo.isAdmin && (
+            <NavDropdown
+              title={
+                <span>
+                  <AccountCircleIcon
+                    className="header__login"
+                    fontSize="large"
+                  />
+                  <p>{userInfo.name}</p>
+                </span>
+              }
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
+                Профил
+              </NavDropdown.Item>
+
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/admin/dashboard");
+                }}
+              >
+                Dashboard
+              </NavDropdown.Item>
+
+              <NavDropdown.Divider />
+              <NavDropdown.Item
+                className="drowdown-item"
+                to="#signout"
+                onClick={signoutHandler}
+              >
+                Одјави се
+              </NavDropdown.Item>
+            </NavDropdown>
+          )}
+          {userInfo && !userInfo.isAdmin && (
             <NavDropdown
               title={
                 <span>
@@ -555,7 +594,8 @@ function Header() {
                 Одјави се
               </NavDropdown.Item>
             </NavDropdown>
-          ) : (
+          )}
+          {!userInfo && (
             <Link
               to={"/signin"}
               className="link"

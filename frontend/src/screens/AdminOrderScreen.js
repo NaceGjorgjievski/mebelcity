@@ -10,6 +10,8 @@ import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -57,6 +59,68 @@ export default function OrderScreen() {
     }
   }, [order, userInfo, orderId, navigate]);
 
+  const confirmOrderHandler = async () => {
+    let isConfirmed = true;
+    let _id = order._id;
+    try {
+      const { data } = await axios.put("/api/orders/action", {
+        isConfirmed,
+        _id,
+      });
+
+      toast.success("Нарачката е потврдена");
+    } catch (err) {
+      dispatch({ type: "FETCH_FAIL" });
+      toast.error("Грешка");
+    }
+  };
+  const sendOrderHandler = async () => {
+    let isShipped = true;
+    let shippedAt = Date();
+    let _id = order._id;
+    try {
+      const { data } = await axios.put("/api/orders/action", {
+        isShipped,
+        shippedAt,
+        _id,
+      });
+
+      toast.success("Нарачката е испратена");
+    } catch (err) {
+      dispatch({ type: "FETCH_FAIL" });
+      toast.error("Грешка");
+    }
+  };
+  const finishOrderHandler = async () => {
+    let isDelivered = true;
+    let deliveredAt = Date();
+    let _id = order._id;
+    try {
+      if (order.isPaid) {
+        const { data } = await axios.put("/api/orders/action", {
+          isDelivered,
+          deliveredAt,
+          _id,
+        });
+      } else {
+        let isPaid = true;
+        let paidAt = Date();
+        const { data } = await axios.put("/api/orders/action", {
+          _id,
+          isDelivered,
+          deliveredAt,
+          isPaid,
+          paidAt,
+        });
+      }
+
+      toast.success("Нарачката е пристигната");
+    } catch (err) {
+      dispatch({ type: "FETCH_FAIL" });
+      toast.error("Грешка");
+    }
+  };
+
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
@@ -78,25 +142,10 @@ export default function OrderScreen() {
                 <strong>Адреса:</strong> {order.shippingAddress.address},
                 {order.shippingAddress.city},{order.shippingAddress.postalCode},
                 {order.shippingAddress.country}
+                <br />
+                <strong>Телефон:</strong> {order.contactNumber}
+                <br />
               </Card.Text>
-              {order.isDelivered ? (
-                <MessageBox variant="success">
-                  Доставено на {order.deliveredAt}
-                </MessageBox>
-              ) : order.isShipped ? (
-                <MessageBox variant="primary">
-                  Вашата нарачка е испратена.
-                </MessageBox>
-              ) : order.isConfirmed ? (
-                <MessageBox variant="primary">
-                  Вашата нарачка се процесира.
-                </MessageBox>
-              ) : (
-                <MessageBox variant="danger">
-                  Потребно е да ја потврдите нарачката. Ќе бидете контактирани
-                  преку телефонскиот број оставен за контакт.
-                </MessageBox>
-              )}
             </Card.Body>
           </Card>
           <Card className="mb-3">
@@ -176,6 +225,47 @@ export default function OrderScreen() {
                       <strong>{order.totalPrice.toFixed(2)} ден</strong>
                     </Col>
                   </Row>
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+          </Card>
+          <Card style={{ marginTop: "40px" }}>
+            <Card.Body>
+              <Card.Title>Акции</Card.Title>
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <Button
+                    style={{ width: "100%" }}
+                    disabled={order.isConfirmed === true}
+                    onClick={confirmOrderHandler}
+                  >
+                    Потврди Нарачка
+                  </Button>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Button
+                    style={{ width: "100%" }}
+                    disabled={
+                      order.isConfirmed === false || order.isShipped === true
+                    }
+                    onClick={sendOrderHandler}
+                  >
+                    Испрати Нарачка
+                  </Button>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <Button
+                    style={{ width: "100%" }}
+                    disabled={
+                      order.isConfirmed === false ||
+                      order.isShipped === false ||
+                      order.isDelivered === true
+                    }
+                    onClick={finishOrderHandler}
+                  >
+                    Нарачката е пристигната
+                  </Button>
                 </ListGroup.Item>
               </ListGroup>
             </Card.Body>

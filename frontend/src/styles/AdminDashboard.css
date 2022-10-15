@@ -1,0 +1,76 @@
+#pgContainer {
+  display: flex;
+  width: 100vw;
+  height: 850px;
+}
+
+#sidebarMenu {
+  height: 100%;
+  background-color: rgb(66, 63, 72);
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+  align-items: center;
+  padding-top: 30px;
+  overflow-x: hidden;
+}
+
+#mainScreen {
+  flex: 1;
+}
+
+.taskContainer {
+  width: 90%;
+  margin-top: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  height: 40px;
+  color: white;
+}
+
+.dashboard-btn:hover {
+  background-color: #0d6efd;
+  cursor: pointer;
+}
+
+.newProductFormCointainer {
+  margin-top: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.firstRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.secondRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.thirdRow {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+#textArea {
+  height: 200px;
+}

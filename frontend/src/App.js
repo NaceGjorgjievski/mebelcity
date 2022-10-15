@@ -20,10 +20,17 @@ import OrderScreen from "./screens/OrderScreen";
 import CardPaymentScreen from "./screens/CardPaymentScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-
+import AdminDashboardScreen from "./screens/AdminDashboardScreen";
+import ListProducts from "./components/ListProducts";
+import AdminAddProductScreen from "./screens/AdminAddProductScreen";
+import AdminProductsScreen from "./screens/AdminProductsScreen";
+import AdminEditProductScreen from "./screens/AdminEditProductScreen";
+import AdminOrdersScreen from "./screens/AdminOrdersScreen";
+import AdminOrderScreen from "./screens/AdminOrderScreen";
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
+  //<Route path="/search" element={<AdminProductsScreen />} />
   return (
     <BrowserRouter>
       <ToastContainer position="bottom-center" limit={1} />
@@ -43,6 +50,15 @@ function App() {
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/order/:id" element={<OrderScreen />} />
         <Route path="/products" element={<CategoryScreen />} />
+        <Route path="/admin/dashboard" element={<AdminDashboardScreen />} />
+        <Route path="/admin/addProduct" element={<AdminAddProductScreen />} />
+        <Route path="/admin/products" element={<AdminProductsScreen />} />
+        <Route path="/admin/orders" element={<AdminOrdersScreen />} />
+        <Route path="/admin/order/:id" element={<AdminOrderScreen />} />
+        <Route
+          path="/admin/product/:slug"
+          element={<AdminEditProductScreen />}
+        />
       </Routes>
 
       <Footer />

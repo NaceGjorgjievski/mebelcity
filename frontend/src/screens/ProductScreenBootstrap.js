@@ -164,6 +164,13 @@ function ProductScreen() {
                   alt={product.name}
                   onClick={changePhoto}
                 ></img>
+
+                <img
+                  id="sec"
+                  src={product.sideImage2}
+                  alt={product.name}
+                  onClick={changePhoto}
+                ></img>
               </Row>
 
               {/*</div>*/}

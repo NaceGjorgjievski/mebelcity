@@ -59,6 +59,8 @@ function PlaceOrderScreen() {
           itemsPrice: cart.itemsPrice,
           shippingPrice: cart.shippingPrice,
           totalPrice: cart.totalPrice,
+          isConfirmed: false,
+          contactNumber: userInfo.contact,
         },
         {
           headers: {

@@ -14,9 +14,13 @@ function Product({ product }) {
   };
   return (
     <div className="product__container">
-      <Link to={`/product/${product.slug}`}>
-        <div className="product__img">
-          <img src={product.image} alt="product"></img>
+      <Link to={`/product/${product.slug}`} style={{ height: "165.91px" }}>
+        <div className="product__img" style={{ height: "100%" }}>
+          <img
+            src={product.image}
+            alt="product"
+            style={{ height: "100%" }}
+          ></img>
         </div>
       </Link>
       <div className="product__textContainer">
