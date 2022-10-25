@@ -49,7 +49,10 @@ function App() {
         <Route path="/orderhistory" element={<OrderHistoryScreen />} />
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/order/:id" element={<OrderScreen />} />
-        <Route path="/products" element={<CategoryScreen />} />
+        <Route
+          path="/products/:category/:subCategory"
+          element={<CategoryScreen />}
+        />
         <Route path="/admin/dashboard" element={<AdminDashboardScreen />} />
         <Route path="/admin/addProduct" element={<AdminAddProductScreen />} />
         <Route path="/admin/products" element={<AdminProductsScreen />} />

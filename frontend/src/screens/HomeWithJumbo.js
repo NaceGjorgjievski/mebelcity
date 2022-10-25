@@ -13,8 +13,10 @@ import Footer from "../components/Footer";
 
 import { Helmet } from "react-helmet-async";
 import Jumbo from "../components/JumboSlider";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   const clearActive = () => {
     let icon1 = document.getElementById("icon1");
     icon1.classList.remove("activeIcon");
@@ -107,14 +109,54 @@ function Home() {
         </div>
       </div>
       <div className="grid-container">
-        <div className="grid-item item1">Дневна</div>
-        <div className="grid-item item2">Ходник</div>
-        <div className="grid-item item3">Трпезарија</div>
-        <div className="grid-item item4">Спална</div>
-        <div className="grid-item item5">Кујна</div>
-        <div className="grid-item item6">Канцеларија</div>
-        <div className="grid-item item7">Детска соба</div>
-        <div className="grid-item item8">Мебел за градина</div>
+        <div
+          className="grid-item item1"
+          onClick={() => navigate("/products/dnevna/all")}
+        >
+          Дневна
+        </div>
+        <div
+          className="grid-item item2"
+          onClick={() => navigate("/products/hodnik/all")}
+        >
+          Ходник
+        </div>
+        <div
+          className="grid-item item3"
+          onClick={() => navigate("/products/trpezarija/all")}
+        >
+          Трпезарија
+        </div>
+        <div
+          className="grid-item item4"
+          onClick={() => navigate("/products/spalna/all")}
+        >
+          Спална
+        </div>
+        <div
+          className="grid-item item5"
+          onClick={() => navigate("/products/kujna/all")}
+        >
+          Кујна
+        </div>
+        <div
+          className="grid-item item6"
+          onClick={() => navigate("/products/kancelarija/all")}
+        >
+          Канцеларија
+        </div>
+        <div
+          className="grid-item item7"
+          onClick={() => navigate("/products/detska/all")}
+        >
+          Детска соба
+        </div>
+        <div
+          className="grid-item item8"
+          onClick={() => navigate("/products/gradina/all")}
+        >
+          Мебел за градина
+        </div>
       </div>
     </div>
   );

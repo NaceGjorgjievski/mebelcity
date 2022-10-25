@@ -154,7 +154,6 @@ function CardPaymentScreen() {
                 <option value="12">12</option>
               </Form.Select>
               <Form.Select style={{ width: "47%", margin: "auto" }}>
-                <option value="01">22</option>
                 <option value="02">23</option>
                 <option value="03">24</option>
                 <option value="04">25</option>

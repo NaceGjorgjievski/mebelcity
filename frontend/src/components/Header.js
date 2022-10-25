@@ -22,6 +22,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Store } from "../Store";
 import { useContext } from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { height } from "@mui/system";
 
 const toggleMenu = (event) => {
   event.stopPropagation();
@@ -132,13 +133,118 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Аголни гарнитури</li>
-                      <li>Софи</li>
-                      <li>Фотелји</li>
-                      <li>Табуретки</li>
-                      <li>Клуб Маси</li>
-                      <li>ТВ комоди</li>
-                      <li>Комоди</li>
+                      <li>
+                        <Link
+                          to="/products/dnevna/agolni-garnituri"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Аголни гарнитури
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/dnevna/sofi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Софи
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/dnevna/fotelji"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Фотелји
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/dnevna/taburetki"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Табуретки
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/dnevna/klub-masi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Клуб Маси
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/dnevna/tv-komodi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          ТВ Комоди
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/dnevna/komodi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Комоди
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -156,9 +262,54 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Шкафови за чевли</li>
-                      <li>Закачалки и огледала</li>
-                      <li>Колекции за ходник</li>
+                      <li>
+                        <Link
+                          to="/products/hodnik/skafovi-za-cevli"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Шкафови за чевли
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/hodnik/zakacalki-i-ogledala"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Закачалки и огледала
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/hodnik/kolekcii-za-hodnik"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Колекции за ходник
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -176,8 +327,38 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Кујнски аголни гарнитури</li>
-                      <li>Стандардни кујни</li>
+                      <li>
+                        <Link
+                          to="/products/kujna/kujnski-agolni-garnituri"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Кујнски аголни гарнитури
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/kujna/standarni-kujni"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Стандардни кујни
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -195,12 +376,105 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Спални комплети</li>
-                      <li>Лежаи</li>
-                      <li>Кревети</li>
-                      <li>Плакари</li>
-                      <li>Ноќни шкафчиња</li>
-                      <li>Тоалетни маси</li>
+                      <li>
+                        <Link
+                          to="/products/spalna/spalni-kompleti"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Спални комплети
+                        </Link>
+                      </li>
+
+                      <li>
+                        <Link
+                          to="/products/spalna/lezai"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Лежаи
+                        </Link>
+                      </li>
+
+                      <li>
+                        <Link
+                          to="/products/spalna/kreveti"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Кревети
+                        </Link>
+                      </li>
+
+                      <li>
+                        <Link
+                          to="/products/spalna/plakari"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Плакари
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/spalna/nokni-skafcinja"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Ноќни шкафчиња
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/spalna/toaletni-masi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Тоалетни маси
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -218,12 +492,102 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Градинарски комплети</li>
-                      <li>Градинарски лулки</li>
-                      <li>Градинарски чадори</li>
-                      <li>Градинарски маси</li>
-                      <li>Градинарски столови</li>
-                      <li>Градинарско осветлување</li>
+                      <li>
+                        <Link
+                          to="/products/gradina/gradinarski-kompleti"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Градинарски комплети
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/gradina/gradinarski-lulki"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Градинарски лулки
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/gradina/gradinarski-cadori"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Градинарски чадори
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/gradina/gradinarski-masi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Градинарски маси
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/gradina/gradinarski-stolovi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Градинарски столови
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/gradina/gradinarsko-osvetluvanje"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Градинарско осветлување
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -241,10 +605,70 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Бироа</li>
-                      <li>Канцелариски столови</li>
-                      <li>Гејмерски столови</li>
-                      <li>Канцелариски шкафови</li>
+                      <li>
+                        <Link
+                          to="/products/kancelarija/biroa"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Бироа
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/kancelarija/kancelariski-stolovi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Канцелариски столови
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/kancelarija/gejmerski-stolovi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Гејмерски столови
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/kancelarija/kancelariski-skafovi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Канцелариски шкафови
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -262,10 +686,70 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Трпезариски маси</li>
-                      <li>Трпезариски столови</li>
-                      <li>Кујнски гарнитури</li>
-                      <li>Бар столови и маси</li>
+                      <li>
+                        <Link
+                          to="/products/trpezarija/trpezariski-masi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Трпезариски маси
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/trpezarija/trpezariski-stolovi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Трпезариски столови
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/trpezarija/kujnski-garnituri"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Кујнски гарнитури
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/trpezarija/bar-stolovi-i-masi"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Бар столови и маси
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -283,9 +767,54 @@ function Header() {
                       Назад
                     </div>
                     <ul>
-                      <li>Колекции за детска соба</li>
-                      <li>Детски бироа</li>
-                      <li>Лежаи</li>
+                      <li>
+                        <Link
+                          to="/products/detska/kolekcii-za-detska-soba"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Колекции за детска соба
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/detska/detski-biroa"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Детски бироа
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/detska/detski-lezai"
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Лежаи
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -311,67 +840,79 @@ function Header() {
             <div className="header__dropdownColumn">
               <ul>
                 <li>
-                  <a href="#">
+                  <Link to="/products/dnevna/all">
                     <span>
                       <WeekendIcon /> Дневна
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Аголни гарнитури</a>
+                      <Link to="/products/dnevna/agolni-garnituri">
+                        Аголни гарнитури
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Софи</a>
+                      <Link to="/products/dnevna/sofi">Софи</Link>
                     </li>
                     <li>
-                      <a href="#">Фотелји</a>
+                      <Link to="/products/dnevna/fotelji">Фотелји</Link>
                     </li>
                     <li>
-                      <a href="#">Табуретки</a>
+                      <Link to="/products/dnevna/taburetki">Табуретки</Link>
                     </li>
                     <li>
-                      <a href="#">Клуб Маси</a>
+                      <Link to="/products/dnevna/klub-masi">Клуб Маси</Link>
                     </li>
                     <li>
-                      <a href="#">ТВ Комоди</a>
+                      <Link to="/products/dnevna/tv-komodi">ТВ Комоди</Link>
                     </li>
                     <li>
-                      <a href="#">Комоди</a>
+                      <Link to="/products/dnevna/komodi">Комоди</Link>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/products/hodnik/all">
                     <span>
                       <MeetingRoomIcon />
                       Ходник
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Шкафови за чевли</a>
+                      <Link to="/products/hodnik/skafovi-za-cevli">
+                        Шкафови за чевли
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Закачалки и огледала</a>
+                      <Link to="/products/hodnik/zakacalki-i-ogledala">
+                        Закачалки и огледала
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Колекции за ходник</a>
+                      <Link to="/products/hodnik/kolekcii-za-hodnik">
+                        Колекции за ходник
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/products/kujna/all">
                     <span>
                       <KitchenIcon />
                       Кујна
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Кујнски аголни гарнитури</a>
+                      <Link to="/products/kujna/kujnski-agolni-garnituri">
+                        Кујнски аголни гарнитури
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Стандардни кујни</a>
+                      <Link to="/products/kujna/standarni-kujni">
+                        Стандардни кујни
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -380,61 +921,79 @@ function Header() {
             <div className="header__dropdownColumn">
               <ul>
                 <li>
-                  <a href="#">
+                  <Link to="/products/spalna/all">
                     <span>
                       <BedIcon />
                       Спална
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Спални комплети</a>
+                      <Link to="/products/spalna/spalni-kompleti">
+                        Спални комплети
+                      </Link>
                     </li>
 
                     <li>
-                      <a href="#">Лежаи</a>
+                      <Link to="/products/spalna/lezai">Лежаи</Link>
                     </li>
 
                     <li>
-                      <a href="#">Кревети</a>
+                      <Link to="/products/spalna/kreveti">Кревети</Link>
                     </li>
 
                     <li>
-                      <a href="#">Плакари</a>
+                      <Link to="/products/spalna/plakari">Плакари</Link>
                     </li>
                     <li>
-                      <a href="#">Ноќни шкафчиња</a>
+                      <Link to="/products/spalna/nokni-skafcinja">
+                        Ноќни шкафчиња
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Тоалетни маси</a>
+                      <Link to="/products/spalna/toaletni-masi">
+                        Тоалетни маси
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/products/gradina/all">
                     <span>
                       <DeckIcon />
                       Мебел за градина
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Градинарски комплети</a>
+                      <Link to="/products/gradina/gradinarski-kompleti">
+                        Градинарски комплети
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Градинарски лулки</a>
+                      <Link to="/products/gradina/gradinarski-lulki">
+                        Градинарски лулки
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Градинарски чадори</a>
+                      <Link to="/products/gradina/gradinarski-cadori">
+                        Градинарски чадори
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Градинарски маси</a>
+                      <Link to="/products/gradina/gradinarski-masi">
+                        Градинарски маси
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Градинарски столови</a>
+                      <Link to="/products/gradina/gradinarski-stolovi">
+                        Градинарски столови
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Градинарско осветлување</a>
+                      <Link to="/products/gradina/gradinarsko-osvetluvanje">
+                        Градинарско осветлување
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -443,65 +1002,83 @@ function Header() {
             <div className="header__dropdownColumn">
               <ul>
                 <li>
-                  <a href="#">
+                  <Link to="/products/kancelarija/all">
                     <span>
                       <ChairAltIcon />
                       Канцеларија
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Бироа</a>
+                      <Link to="/products/kancelarija/biroa">Бироа</Link>
                     </li>
                     <li>
-                      <a href="#">Канцелариски столови</a>
+                      <Link to="/products/kancelarija/kancelariski-stolovi">
+                        Канцелариски столови
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Гејмерски столови</a>
+                      <Link to="/products/kancelarija/gejmerski-stolovi">
+                        Гејмерски столови
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Канцелариски шкафови</a>
+                      <Link to="/products/kancelarija/kancelariski-skafovi">
+                        Канцелариски шкафови
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/products/trpezarija/all">
                     <span>
                       <TableRestaurantIcon />
                       Трпезарија
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Трпезариски маси</a>
+                      <Link to="/products/trpezarija/trpezariski-masi">
+                        Трпезариски маси
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Трпезариски столови</a>
+                      <Link to="/products/trpezarija/trpezariski-stolovi">
+                        Трпезариски столови
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Кујнски гарнитури</a>
+                      <Link to="/products/trpezarija/kujnski-garnituri">
+                        Кујнски гарнитури
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Бар столови и маси</a>
+                      <Link to="/products/trpezarija/bar-stolovi-i-masi">
+                        Бар столови и маси
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/products/detska/all">
                     <span>
                       <BedroomChildIcon />
                       Детска соба
                     </span>
-                  </a>
+                  </Link>
                   <ul>
                     <li>
-                      <a href="#">Колекции за детска соба</a>
+                      <Link to="/products/detska/kolekcii-za-detska-soba">
+                        Колекции за детска соба
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Детски бироа</a>
+                      <Link to="/products/detska/detski-biroa">
+                        Детски бироа
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">Лежаи</a>
+                      <Link to="/products/detska/detski-lezai">Лежаи</Link>
                     </li>
                   </ul>
                 </li>

@@ -50,7 +50,7 @@ productRouter.post(
   })
 );
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 7;
 productRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {

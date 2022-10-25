@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import Product from "../components/Product";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,6 +34,7 @@ function Home() {
     loading: true,
     error: "",
   });
+  const navigate = useNavigate();
   //const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -147,7 +149,12 @@ function Home() {
         </div>
       </div>
       <div className="grid-container">
-        <div className="grid-item item1">Дневна</div>
+        <div
+          className="grid-item item1"
+          onClick={() => navigate("/products/dnevna/all")}
+        >
+          Дневна
+        </div>
         <div className="grid-item item2">Ходник</div>
         <div className="grid-item item3">Трпезарија</div>
         <div className="grid-item item4">Спална</div>

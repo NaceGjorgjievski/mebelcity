@@ -108,6 +108,7 @@ tr {
 .imgRow {
   display: flex !important;
   justify-content: center !important;
+  margin-top: 10px;
 }
 
 #sec {
