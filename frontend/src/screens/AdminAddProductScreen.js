@@ -19,6 +19,9 @@ function AdminAddProductScreen() {
   const [sideImage2, setSideImage2] = useState("");
   const [dimension, setDimension] = useState("");
   const [scheme, setScheme] = useState("");
+  const [H, setH] = useState("");
+  const [W, setW] = useState("");
+  const [L, setL] = useState("");
   const [message, setMessage] = useState("");
 
   const onChangeImage = (e) => {
@@ -55,7 +58,9 @@ function AdminAddProductScreen() {
     formData.append("sideImage2", sideImage2);
     formData.append("dimension", dimension);
     formData.append("scheme", scheme);
-
+    formData.append("H", H);
+    formData.append("W", W);
+    formData.append("L", L);
     try {
       const result = await axios.post("/api/products/add", formData);
       if (result) toast.success("Product Added");
@@ -75,6 +80,12 @@ function AdminAddProductScreen() {
           <div className="dashboard-btn" to="/admin/addProduct">
             Додади нов производ
           </div>
+        </Link>
+        <Link
+          to={"/admin/addCategory"}
+          style={{ textDecoration: "none", width: "100%" }}
+        >
+          <div className="dashboard-btn">Додади категорија</div>
         </Link>
         <Link
           to={"/admin/products"}
@@ -350,6 +361,61 @@ function AdminAddProductScreen() {
                 </Form.Group>
               </div>
               <div>
+                <Form.Group
+                  style={{ display: "flex", justifyContent: "space-around" }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Form.Label>H:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="dimension"
+                      style={{ width: "60px" }}
+                      value={H}
+                      onChange={(e) => setH(e.target.value)}
+                      required
+                    ></Form.Control>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Form.Label>W:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="dimension"
+                      value={W}
+                      onChange={(e) => setW(e.target.value)}
+                      style={{ width: "60px" }}
+                      required
+                    ></Form.Control>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Form.Label>L:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="dimension"
+                      style={{ width: "60px" }}
+                      value={L}
+                      onChange={(e) => setL(e.target.value)}
+                      required
+                    ></Form.Control>
+                  </div>
+                </Form.Group>
                 <Form.Group>
                   <Form.Label>Слика со димензии</Form.Label>
                   <Form.Control

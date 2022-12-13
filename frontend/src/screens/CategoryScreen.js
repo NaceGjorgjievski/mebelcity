@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "../styles/Home.css";
 // import data from "./data";
 import Product from "../components/Product";
@@ -33,6 +33,17 @@ const reducer = (state, action) => {
 function Home() {
   const params = useParams();
   const { category, subCategory } = params;
+  var HF = 0;
+  var HT = 1000;
+  var WF = 0;
+  var WT = 1000;
+  var LF = 0;
+  var LT = 1000;
+  //const [HT, setHT] = useState(1000);
+  //const [WF, setWF] = useState(0);
+  //const [WT, setWT] = useState(1000);
+  //const [LF, setLF] = useState(0);
+  //const [LT, setLT] = useState(1000);
   const navigate = useNavigate();
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
@@ -42,7 +53,6 @@ function Home() {
   //const name = sp.get("name") || "all";
   const order = sp.get("order") || "newest";
   const page = sp.get("page") || 1;
-
   const [{ loading, error, products, pages, countProducts }, dispatch] =
     useReducer(reducer, { loading: true, error: "" });
 
@@ -55,7 +65,7 @@ function Home() {
           `/api/products/search?page=${page}&query=${query}&category=${category}&subCategory=${subCategory}&order=${order}`
         );*/
         const { data } = await axios.get(
-          `/api/products?page=${page}&query=${query}&category=${category}&subCategory=${subCategory}&order=${order}`
+          `/api/products?page=${page}&query=${query}&category=${category}&subCategory=${subCategory}&order=${order}&HF=${HF}&HT=${HT}&WF=${WF}&WT=${WT}&LF=${LF}&LT=${LT}`
         );
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
@@ -63,7 +73,20 @@ function Home() {
       }
     };
     fetchData();
-  }, [category, page, query, order, subCategory, error]);
+  }, [
+    category,
+    page,
+    query,
+    order,
+    subCategory,
+    error,
+    HF,
+    HT,
+    WF,
+    WT,
+    LF,
+    LT,
+  ]);
 
   const getFilterUrl = (filter) => {
     const filterPage = filter.page || page;
@@ -71,7 +94,40 @@ function Home() {
     const filterQuery = filter.query || query;
     const filterSubCategory = filter.subCategory || subCategory;
     const sortOrder = filter.order || order;
-    return `?category=${filterCategorry}&query=${filterQuery}&subCategory=${filterSubCategory}&page=${filterPage}&order=${sortOrder}`;
+    const filterHF = filter.HF || HF;
+    const filterHT = filter.HT || HT;
+    const filterWF = filter.WF || WF;
+    const filterWT = filter.WT || WT;
+    const filterLF = filter.LF || LF;
+    const filterLT = filter.LT || LT;
+    return `?category=${filterCategorry}&query=${filterQuery}&subCategory=${filterSubCategory}&page=${filterPage}&order=${sortOrder}&HF=${filterHF}&HT=${filterHT}&WF=${filterWF}&WT=${filterWT}&LF=${filterLF}&LT=${filterLT}`;
+  };
+
+  const filterHandler = (e) => {
+    e.preventDefault();
+    HF = document.getElementById("HF").value;
+    HT = document.getElementById("HT").value;
+    WF = document.getElementById("WF").value;
+    WT = document.getElementById("WT").value;
+    LF = document.getElementById("LF").value;
+    LT = document.getElementById("LT").value;
+    console.log(HT);
+    const fetchData = async () => {
+      try {
+        dispatch({ type: "FETCH_REQUEST" });
+        /*
+        const { data } = await axios.get(
+          `/api/products/search?page=${page}&query=${query}&category=${category}&subCategory=${subCategory}&order=${order}`
+        );*/
+        const { data } = await axios.get(
+          `/api/products?page=${page}&query=${query}&category=${category}&subCategory=${subCategory}&order=${order}&HF=${HF}&HT=${HT}&WF=${WF}&WT=${WT}&LF=${LF}&LT=${LT}`
+        );
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
+      } catch (err) {
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
+      }
+    };
+    fetchData();
   };
 
   return (
@@ -123,14 +179,57 @@ function Home() {
               }}
             >
               <Form
+                onSubmit={filterHandler}
                 style={{
                   width: "100%",
                   display: "flex",
-                  justifyContent: "end",
+                  justifyContent: "space-around",
                   marginRight: "40px",
                   alignItems: "center",
                 }}
               >
+                <Form.Group style={{ display: "flex", alignItems: "center" }}>
+                  <Form.Label style={{ margin: "0px" }}>H:</Form.Label>
+                  <Form.Control
+                    style={{ width: "60px" }}
+                    id="HF"
+                    //onChange={(e) => setHF(e.target.value)}
+                  />
+                  <Form.Label style={{ margin: "0px" }}>-</Form.Label>
+                  <Form.Control
+                    style={{ width: "60px" }}
+                    id="HT"
+                    //onChange={(e) => setHT(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group style={{ display: "flex", alignItems: "center" }}>
+                  <Form.Label style={{ margin: "0px" }}>W:</Form.Label>
+                  <Form.Control
+                    style={{ width: "60px" }}
+                    id="WF"
+                    //onChange={(e) => setWF(e.target.value)}
+                  />
+                  <Form.Label style={{ margin: "0px" }}>-</Form.Label>
+                  <Form.Control
+                    style={{ width: "60px" }}
+                    id="WT"
+                    //onChange={(e) => setWT(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group style={{ display: "flex", alignItems: "center" }}>
+                  <Form.Label style={{ margin: "0px" }}>L:</Form.Label>
+                  <Form.Control
+                    id="LF"
+                    style={{ width: "60px" }}
+                    //onChange={(e) => setLF(e.target.value)}
+                  />
+                  <Form.Label style={{ margin: "0px" }}>-</Form.Label>
+                  <Form.Control
+                    id="LT"
+                    style={{ width: "60px" }}
+                    //onChange={(e) => setLT(e.target.value)}
+                  />
+                </Form.Group>
                 {/*}
                 <Form.Group>
                   <Form.Select
@@ -291,6 +390,11 @@ function Home() {
                     <option value={"lowFirst"}>Од ниска кон висока</option>
                     <option value={"highFirst"}>Од висока кон ниска</option>
                   </Form.Select>
+                </Form.Group>
+                <Form.Group>
+                  <Button variant="danger" size="lg" type="submit">
+                    Филтрирај
+                  </Button>
                 </Form.Group>
               </Form>
             </div>

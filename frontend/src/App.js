@@ -27,6 +27,8 @@ import AdminProductsScreen from "./screens/AdminProductsScreen";
 import AdminEditProductScreen from "./screens/AdminEditProductScreen";
 import AdminOrdersScreen from "./screens/AdminOrdersScreen";
 import AdminOrderScreen from "./screens/AdminOrderScreen";
+import AdminAddCategoryScreen from "./screens/AdminAddCategoryScreen";
+import SearchScreen from "./screens/SearchScreen";
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
@@ -53,8 +55,13 @@ function App() {
           path="/products/:category/:subCategory"
           element={<CategoryScreen />}
         />
+        <Route path="/products/search" element={<SearchScreen />} />
         <Route path="/admin/dashboard" element={<AdminDashboardScreen />} />
         <Route path="/admin/addProduct" element={<AdminAddProductScreen />} />
+        <Route
+          path="/admin/addCategory"
+          element={<AdminAddCategoryScreen />}
+        ></Route>
         <Route path="/admin/products" element={<AdminProductsScreen />} />
         <Route path="/admin/orders" element={<AdminOrdersScreen />} />
         <Route path="/admin/order/:id" element={<AdminOrderScreen />} />

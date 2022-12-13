@@ -97,6 +97,12 @@ function AdminProductsScreen() {
               </div>
             </Link>
             <Link
+              to={"/admin/addCategory"}
+              style={{ textDecoration: "none", width: "100%" }}
+            >
+              <div className="dashboard-btn">Додади категорија</div>
+            </Link>
+            <Link
               to={"/admin/products"}
               style={{ textDecoration: "none", width: "100%" }}
             >

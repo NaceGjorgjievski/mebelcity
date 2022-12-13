@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../Images/logo.png";
 import "../styles/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
@@ -23,6 +23,8 @@ import { Store } from "../Store";
 import { useContext } from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { height } from "@mui/system";
+import Axios from "axios";
+import CategoryMenu from "./CategoryMenu";
 
 const toggleMenu = (event) => {
   event.stopPropagation();
@@ -75,6 +77,9 @@ function Header() {
   const { cart, userInfo } = state;
   const navigate = useNavigate();
 
+  const [categories, setCategories] = useState([]);
+  //const []
+
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
@@ -82,6 +87,51 @@ function Header() {
     localStorage.removeItem("paymentMethod");
     window.location.href = "/signin";
   };
+
+  const searchHandler = () => {
+    let text = document.querySelector(".header__searchInput").value;
+    console.log(text);
+    navigate(`/products/search?text=${text}`);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const cat = await Axios.get(`/api/category/getCategories`);
+      categories.splice(0, categories.length);
+      for (let i = 0; i < cat.data.length; i++) {
+        categories.push(cat.data[i]);
+      }
+      console.log(categories[0]);
+    };
+    fetchData();
+  }, [categories]);
+  const results = [];
+  const results1 = [];
+  const results2 = [];
+  const results3 = [];
+  if (categories) createMenu(categories);
+  function createMenu(categories) {
+    /*
+    let ul = document.getElementById("category-ul-1");
+    for(let i=0;i<categories.length;i++){
+      ul.appendChild()
+    }*/
+    results.splice(0, results.length);
+    categories.forEach((category) => {
+      results.push(<CategoryMenu category={category} />);
+    });
+    for (let i = 0; i < categories.length; i++) {
+      if (i < 3) {
+        results1.push(<CategoryMenu category={categories[i]} />);
+      } else if (i < 5) {
+        results2.push(<CategoryMenu category={categories[i]} />);
+      } else {
+        results3.push(<CategoryMenu category={categories[i]} />);
+      }
+    }
+    console.log("Results:");
+    console.log(categories);
+  }
 
   return (
     <div className="header">
@@ -838,7 +888,9 @@ function Header() {
           </span>
           <div className="header__dropdown">
             <div className="header__dropdownColumn">
-              <ul>
+              <ul id="category-ul-1">
+                <li>{categories[0] && results1}</li>
+                {/*
                 <li>
                   <Link to="/products/dnevna/all">
                     <span>
@@ -915,11 +967,13 @@ function Header() {
                       </Link>
                     </li>
                   </ul>
-                </li>
+                        </li>*/}
               </ul>
             </div>
             <div className="header__dropdownColumn">
               <ul>
+                <li>{categories[0] && results2}</li>
+                {/*
                 <li>
                   <Link to="/products/spalna/all">
                     <span>
@@ -997,10 +1051,13 @@ function Header() {
                     </li>
                   </ul>
                 </li>
+                      */}
               </ul>
             </div>
             <div className="header__dropdownColumn">
               <ul>
+                <li>{categories[0] && results3}</li>
+                {/*
                 <li>
                   <Link to="/products/kancelarija/all">
                     <span>
@@ -1082,6 +1139,7 @@ function Header() {
                     </li>
                   </ul>
                 </li>
+                */}
               </ul>
             </div>
             <div className="header__dropdownColumn">
@@ -1200,8 +1258,10 @@ function Header() {
           </Link>
         </div>
         <div className="header__search">
-          <input className="header__searchInput" type="text" />
-          <SearchIcon className="header__searchIcon" fontSize="large" />
+          <input className="header__searchInput" type="text" name="text" />
+          <button onClick={searchHandler}>
+            <SearchIcon className="header__searchIcon" fontSize="large" />
+          </button>
         </div>
       </div>
     </div>

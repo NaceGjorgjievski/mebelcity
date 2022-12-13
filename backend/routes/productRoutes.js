@@ -41,6 +41,9 @@ productRouter.post(
       price: req.body.price,
       priceMontaza: req.body.priceMontaza,
       countInStock: req.body.countInStock,
+      height: req.body.H,
+      width: req.body.W,
+      length: req.body.L,
     });
 
     const product = await newProduct.save();
@@ -51,6 +54,52 @@ productRouter.post(
 );
 
 const PAGE_SIZE = 7;
+
+productRouter.get(
+  "/search",
+  expressAsyncHandler(async (req, res) => {
+    const { query } = req;
+    const pageSize = query.pageSize || PAGE_SIZE;
+    const page = query.page || 1;
+    const searchQuery = query.text;
+    console.log("HEEEY: " + searchQuery);
+    const queryFilter =
+      searchQuery && searchQuery !== "all"
+        ? { name: { $regex: searchQuery, $options: "i" } }
+        : {};
+    const descriptionFilter =
+      searchQuery && searchQuery !== "all"
+        ? { description: { $regex: searchQuery, $options: "i" } }
+        : {};
+    const slug =
+      searchQuery && searchQuery !== "all"
+        ? { slug: { $regex: searchQuery, $options: "i" } }
+        : {};
+    const products = await Product.find({
+      $or: [
+        { name: { $regex: searchQuery, $options: "i" } },
+        { slug: { $regex: searchQuery, $options: "i" } },
+        { description: { $regex: searchQuery, $options: "i" } },
+      ],
+    })
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+    const countProducts = await Product.countDocuments({
+      $or: [
+        { name: { $regex: searchQuery, $options: "i" } },
+        { slug: { $regex: searchQuery, $options: "i" } },
+        { description: { $regex: searchQuery, $options: "i" } },
+      ],
+    });
+    res.send({
+      products,
+      countProducts,
+      page,
+      pages: Math.ceil(countProducts / pageSize),
+    });
+  })
+);
+
 productRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
@@ -61,6 +110,12 @@ productRouter.get(
     const subCategory = query.subCategory || "";
     const order = query.order || "";
     const searchQuery = query.query || "";
+    const HF = query.HF || 0;
+    const HT = query.HT || 1000;
+    const WF = query.WF || 0;
+    const WT = query.WT || 1000;
+    const LF = query.LF || 0;
+    const LT = query.LT || 1000;
 
     const queryFilter =
       searchQuery && searchQuery !== "all"
@@ -79,6 +134,14 @@ productRouter.get(
       ...queryFilter,
       ...categoryFilter,
       ...subCategoryFilter,
+      $and: [
+        { height: { $gte: HF } },
+        { height: { $lte: HT } },
+        { width: { $gte: WF } },
+        { width: { $lte: WT } },
+        { length: { $gte: LF } },
+        { length: { $lte: LT } },
+      ],
     })
       .sort(sortOrder)
       .skip(pageSize * (page - 1))

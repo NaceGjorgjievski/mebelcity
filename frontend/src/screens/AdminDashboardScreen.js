@@ -5,6 +5,7 @@ import AddProductForm from "../components/AddProductForm";
 import { Store } from "../Store";
 import { useNavigate, Link } from "react-router-dom";
 import ListProducts from "../components/ListProducts";
+import { Helmet } from "react-helmet-async";
 
 function AdminDashboardScreen() {
   const navigate = useNavigate();
@@ -18,6 +19,9 @@ function AdminDashboardScreen() {
 
   return (
     <div id="pgContainer">
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       <div id="sidebarMenu">
         <Link
           to={"/admin/addProduct"}
@@ -26,6 +30,12 @@ function AdminDashboardScreen() {
           <div className="dashboard-btn" to="/admin/addProduct">
             Додади нов производ
           </div>
+        </Link>
+        <Link
+          to={"/admin/addCategory"}
+          style={{ textDecoration: "none", width: "100%" }}
+        >
+          <div className="dashboard-btn">Додади категорија</div>
         </Link>
         <Link
           to={"/admin/products"}

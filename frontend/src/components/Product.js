@@ -53,26 +53,41 @@ function Product({ product }) {
       </div>
       <div
         style={{
-          width: "100%",
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-around",
           alignItems: "center",
         }}
       >
-        {product.countInStock > 0 ? (
-          <span style={{ color: "green" }}>
-            <CheckIcon></CheckIcon>Залиха
-          </span>
-        ) : (
-          <span style={{ color: "red" }}>
-            <ClearIcon></ClearIcon>Залиха
-          </span>
-        )}
+        <h5>H: {product.height}</h5>
+        <h5>W: {product.width}</h5>
+        <h5>L: {product.length}</h5>
       </div>
-      <div className="product__addToCart" style={{ marginTop: "15px" }}>
+      <div
+        className="product__addToCart"
+        style={{ marginTop: "15px", display: "flex", justifyContent: "center" }}
+      >
         <button onClick={addToCartHandler}>
           <ShoppingBasketIcon />
         </button>
+        <div
+          style={{
+            //width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: "10px",
+          }}
+        >
+          {product.countInStock > 0 ? (
+            <span style={{ color: "green" }}>
+              <CheckIcon></CheckIcon>Залиха
+            </span>
+          ) : (
+            <span style={{ color: "red" }}>
+              <ClearIcon></ClearIcon>Залиха
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
